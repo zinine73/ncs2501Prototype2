@@ -13,8 +13,19 @@ public class SpawnManager : MonoBehaviour
     private float startDelay = 2.0f;
     private float spawnInterval = 1.5f;
 
+    private void OnEnable()
+    {
+        DestroyOutOfBounds.OnGameOver += DisplayGameOver;
+    }
+
+    private void OnDisable()
+    {
+        DestroyOutOfBounds.OnGameOver -= DisplayGameOver;
+    }
+
     private void Start()
     {
+        //DestroyOutOfBounds.OnGameOver.AddListener(DisplayGameOver);
         PanelGameOver.SetActive(false);
         InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);    
     }
@@ -35,5 +46,6 @@ public class SpawnManager : MonoBehaviour
     public void DisplayGameOver()
     {
         PanelGameOver.SetActive(true);
+        CancelInvoke("SpawnRandomAnimal");
     }
 }
