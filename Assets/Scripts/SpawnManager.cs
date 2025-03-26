@@ -15,12 +15,12 @@ public class SpawnManager : MonoBehaviour
 
     private void OnEnable()
     {
-        DestroyOutOfBounds.OnGameOver += DisplayGameOver;
+        //DestroyOutOfBounds.OnGameOver += DisplayGameOver;
     }
 
     private void OnDisable()
     {
-        DestroyOutOfBounds.OnGameOver -= DisplayGameOver;
+        //DestroyOutOfBounds.OnGameOver -= DisplayGameOver;
     }
 
     private void Start()

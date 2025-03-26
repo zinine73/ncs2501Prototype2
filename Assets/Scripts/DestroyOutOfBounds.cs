@@ -1,38 +1,35 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class GameOverAction : UnityEngine.Events.UnityEvent{}
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    //private SpawnManager sm;
-    //public static GameOverAction OnGameOver = new GameOverAction();
-    public delegate void GameOverHandler();
-    public static event GameOverHandler OnGameOver;
-    
-    private float topBound = 30.0f;
-    private float lowerBound = -10.0f;
+    private float topBound = 30;
+    private float lowerBound = -10;
 
+    // Start is called before the first frame update
     void Start()
     {
-        //sm = GameObject.FindGameObjectWithTag("SM").GetComponent<SpawnManager>();
-        //sm = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (transform.position.z > topBound)
         {
-            Destroy(gameObject);
+            // Instead of destroying the projectile when it leaves the screen
+            //Destroy(gameObject);
+
+            // Just deactivate it
+            gameObject.SetActive(false);
+
         }
         else if (transform.position.z < lowerBound)
         {
-            //Debug.Log("Game Over!");
-            //sm.DisplayGameOver();
-            //OnGameOver.Invoke();
-            OnGameOver();
-            
+            Debug.Log("Game Over!");
             Destroy(gameObject);
         }
+
     }
 }
